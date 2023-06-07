@@ -10,9 +10,9 @@ export default {
       {
         mytheme: {
 
-          "primary": "#3e363f",
+          "primary": "#BEE3DB",
 
-          "secondary": "#e1ad01",
+          "secondary": "#89B0AE",
 
           "accent": "#73a580",
 
