@@ -1,29 +1,19 @@
 import { Typewriter } from 'react-simple-typewriter'
-import Lottie from 'react-lottie';
-import languagesAnimation from '../../assets/lottie-animations/languages.json';
+
 
 const HomeBanner = () => {
 
-
+    // :::::::::react simple type writer::::::::::
     const handleType = (count) => {
         // access word count number
         // console.log(count)
     }
-
-
     const handleDone = () => {
         // console.log(`Done after 5 loops!`)
     }
 
 
 
-
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: languagesAnimation,
-
-    };
 
     return (
         <div className='bg-neutral py-4'>
@@ -53,17 +43,14 @@ const HomeBanner = () => {
 
                         <p className='text-white'>"Language is the roadmap of a culture. It tells you where its people have been and where they are going." <br /> - Rita Mae Brown</p>
 
-                        <button className='btn btn-primary w-fit normal-case'>Explore Classes</button>
+                        <button className='btn btn-white w-fit normal-case'>Explore Classes</button>
 
                     </div>
 
 
                 </div>
                 <div className='banner-right'>
-                    <Lottie options={defaultOptions}
-                        height={500}
-                        width={500}
-                    />
+
                 </div>
             </div>
         </div>
