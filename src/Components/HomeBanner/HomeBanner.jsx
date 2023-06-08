@@ -1,5 +1,6 @@
 import { Typewriter } from 'react-simple-typewriter'
-
+import Lottie from 'react-lottie';
+import languagesAnimation from '../../assets/lottie-animations/languages.json';
 
 const HomeBanner = () => {
 
@@ -14,16 +15,27 @@ const HomeBanner = () => {
         // console.log(`Done after 5 loops!`)
     }
 
+
+
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: languagesAnimation,
+
+    };
+
     return (
-        <div>
-            <div className="main-container">
-                <div className='banner-left'>
+        <div className='bg-neutral py-4'>
+            <div className="main-container flex items-center justify-center">
+                <div className='banner-left flex-grow'>
 
                     <div className='flex flex-col gap-4'>
 
-                        <h1 className='pt-20 m-0 font-normal text-4xl'>
+                        <h1 className='m-0 font-normal text-white text-4xl w-3/4'>
                             Learning new languages is{' '}
-                            <span className='font-bold text-secondary'>
+                            <br></br>
+                            <span className='font-bold text-primary font-serif'>
                                 {/* Style will be inherited from the parent element */}
                                 <Typewriter
                                     words={['exhilarating', 'transformative', 'empowering', 'enriching!', 'fascinating', 'adventurous', 'mind-expanding', 'captivating']}
@@ -39,7 +51,7 @@ const HomeBanner = () => {
                             </span>
                         </h1>
 
-                        <p>Embark on a Multilingual Voyage: Discover the World through Language Learning</p>
+                        <p className='text-white'>"Language is the roadmap of a culture. It tells you where its people have been and where they are going." <br /> - Rita Mae Brown</p>
 
                         <button className='btn btn-primary w-fit normal-case'>Explore Classes</button>
 
@@ -48,7 +60,10 @@ const HomeBanner = () => {
 
                 </div>
                 <div className='banner-right'>
-
+                    <Lottie options={defaultOptions}
+                        height={500}
+                        width={500}
+                    />
                 </div>
             </div>
         </div>
