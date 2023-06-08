@@ -1,5 +1,5 @@
 import { Typewriter } from 'react-simple-typewriter'
-
+import { FaSearch } from "react-icons/fa";
 
 const HomeBanner = () => {
 
@@ -16,7 +16,7 @@ const HomeBanner = () => {
 
 
     return (
-        <div className='bg-neutral py-4'>
+        <div className='bg-neutral py-16'>
             <div className="main-container flex items-center justify-center">
                 <div className='banner-left flex-grow'>
 
@@ -25,7 +25,7 @@ const HomeBanner = () => {
                         <h1 className='m-0 font-normal text-white text-4xl w-3/4'>
                             Learning new languages is{' '}
                             <br></br>
-                            <span className='font-bold text-primary font-serif'>
+                            <span className='font-bold text-primary font-playfair'>
                                 {/* Style will be inherited from the parent element */}
                                 <Typewriter
                                     words={['exhilarating', 'transformative', 'empowering', 'enriching!', 'fascinating', 'adventurous', 'mind-expanding', 'captivating']}
@@ -43,7 +43,10 @@ const HomeBanner = () => {
 
                         <p className='text-white'>"Language is the roadmap of a culture. It tells you where its people have been and where they are going." <br /> - Rita Mae Brown</p>
 
-                        <button className='btn btn-white w-fit normal-case'>Explore Classes</button>
+                        <form action="" className='relative flex items-center w-fit'>
+                            <input className='py-2 px-3 rounded-md w-full outline-none focus:shadow-md' type="text" placeholder='Search' name="search" />
+                            <button className='absolute right-3 text-neutral bg-white pl-1.5 h-full'><FaSearch></FaSearch></button>
+                        </form>
 
                     </div>
 
