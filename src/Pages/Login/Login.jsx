@@ -92,7 +92,7 @@ const Login = () => {
                             onChange={e => setEmail(e.target.value)}
                             type="email"
                             id='email'
-                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-red-400 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                         <p className='text-red-700'><small>
                             {emailError ? emailError : ""}
@@ -109,7 +109,7 @@ const Login = () => {
                             onChange={e => setPassword(e.target.value)}
                             type="password"
                             id='password'
-                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-red-400 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40"
                         />
 
                         <p className='text-red-700'><small>
@@ -124,7 +124,7 @@ const Login = () => {
                         Forget Password?
                     </Link>
                     <div className="mt-6">
-                        <button type='submit' className="btn border-none bg-primary text-white hover:bg-warning hover:text-neutral w-full">
+                        <button type='submit' className="btn border-none bg-secondary text-white hover:bg-neutral hover:text-white w-full">
                             Login
                         </button>
                     </div>
@@ -155,7 +155,7 @@ const Login = () => {
                     {" "}
                     Don't have an account?{" "}
                     <Link
-                        to="/signup"
+                        to="/registration"
                         className="font-medium text-purple-600 hover:underline"
                     >
                         Sign up

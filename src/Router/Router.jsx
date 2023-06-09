@@ -7,6 +7,7 @@ import Instructors from "../Pages/Instructors/instructors";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
         element: <Main></Main>,
         children: [
             { path: "/", element: <Home></Home> },
-            { path: "/instructor/:id", element: <InstructorProfile></InstructorProfile> },
+            { path: "/instructor/:id", element: <PrivetRoute><InstructorProfile></InstructorProfile></PrivetRoute> },
             { path: "/courses", element: <Courses></Courses> },
             { path: "/instructors", element: <Instructors></Instructors> },
             { path: "/login", element: <Login></Login> },

@@ -18,13 +18,16 @@ const Navbar = () => {
         <li><Link>Dashboard</Link></li>
         {/* <li><Link to={"/login"}>Login</Link></li> */}
         {user ?
-            <li className="btn border-none bg-white hover:bg-warning text-neutral" onClick={handleLogoutButton}>Logout</li>
+            <li className="" onClick={handleLogoutButton}><Link
+            >
+                Logout
+            </Link></li>
             :
 
             <li><Link
 
                 to="/login"
-                className="btn border-none bg-white hover:bg-warning text-neutral"
+                className=""
             >
                 Login
             </Link></li>
