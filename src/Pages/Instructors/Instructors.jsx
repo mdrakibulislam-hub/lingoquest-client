@@ -1,10 +1,10 @@
+import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
+import InstructorCard from "../../Components/InstructorCard/InstructorCard";
 import useInstructor from "../../Hooks/useInstructor";
-import HeadingTitle from "../HeadingTitle/HeadingTitle";
-import InstructorCard from "../InstructorCard/InstructorCard";
 
-const HomeInstructorSection = () => {
+const Instructors = () => {
 
-    const instructors = useInstructor().slice(0, 6);
+    const instructors = useInstructor();
 
     return (
         <div className="main-container my-16">
@@ -16,4 +16,4 @@ const HomeInstructorSection = () => {
     );
 };
 
-export default HomeInstructorSection;
+export default Instructors;

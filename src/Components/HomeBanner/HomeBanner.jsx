@@ -41,10 +41,10 @@ const HomeBanner = () => {
                             </span>
                         </h1>
 
-                        <p className='text-white'>"Language is the roadmap of a culture. It tells you where its people have been and where they are going." <br /> - Rita Mae Brown</p>
+                        <p className='text-white'>&quot; Language is the roadmap of a culture. It tells you where its people have been and where they are going.&quot; <br /> - Rita Mae Brown</p>
 
                         <form action="" className='relative flex items-center w-fit'>
-                            <input className='py-2 px-3 rounded-md w-full outline-none focus:shadow-md' type="text" placeholder='Search' name="search" />
+                            <input className='py-2 px-3 rounded-md w-full outline-none focus:shadow-xl' type="text" placeholder='Search' name="search" />
                             <button className='absolute right-3 text-neutral bg-white pl-1.5 h-full'><FaSearch></FaSearch></button>
                         </form>
 

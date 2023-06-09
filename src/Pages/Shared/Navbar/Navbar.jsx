@@ -5,9 +5,9 @@ const Navbar = () => {
 
 
     const menuItem = <>
-        <li><Link>Home</Link></li>
-        <li><Link>Courses</Link></li>
-        <li><Link>Instructors</Link></li>
+        <li><Link to={"/"}>Home</Link></li>
+        <li><Link to={"/courses"}>Courses</Link></li>
+        <li><Link to={"/instructors"}>Instructors</Link></li>
         <li><Link>Dashboard</Link></li>
         <li><Link>Login</Link></li>
         <li><Link>Signup</Link></li>
@@ -25,7 +25,7 @@ const Navbar = () => {
                             {menuItem}
                         </ul>
                     </div>
-                    <a><img className="w-40" src={logo} alt="" /></a>
+                    <Link to={"/"}><img className="w-40" src={logo} alt="" /></Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -34,7 +34,7 @@ const InstructorProfile = () => {
 
             <HeadingTitle>Classes by {name}</HeadingTitle>
 
-            <div className="grid grid-cols-4 my-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 my-4 gap-6">
                 {classes.map(data => <ClassCard key={data._id} data={data}></ClassCard>)}
             </div>
 
