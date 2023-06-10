@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ClassCard = ({ data }) => {
-    const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data
+    const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+    const handleSelect = () => {
+        if (user && user.email) {
+            const cartItem = { menuItemId: _id, name, image, price, email: user.email, payment: "unpaid" }
+            fetch('http://localhost:5000/cart', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        // refetch(); // refetch cart to update the number of items in the cart
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Added to selected class, please visit your dashboard.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'You must have to login first to select any class',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+    }
     return (
         <div className='flex flex-col gap-3 bg-primary p-4 rounded-lg'>
             <figure><img className='w-full rounded-md' src={image} alt="" /></figure>
@@ -9,7 +53,7 @@ const ClassCard = ({ data }) => {
             <p>Instructor: {instructorName}</p>
             <p>Seats available: {availableSeats}</p>
             <p>Fee: ৳{price}</p>
-            <button className='btn btn-secondary normal-case'>Select</button>
+            <button onClick={handleSelect} className='btn btn-secondary normal-case'>Select</button>
         </div>
     );
 };
