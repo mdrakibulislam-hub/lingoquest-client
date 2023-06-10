@@ -9,7 +9,7 @@ const ClassCard = ({ data }) => {
             <p>Instructor: {instructorName}</p>
             <p>Seats available: {availableSeats}</p>
             <p>Fee: ৳{price}</p>
-            <button className='btn btn-secondary normal-case'>Enroll Now</button>
+            <button className='btn btn-secondary normal-case'>Select</button>
         </div>
     );
 };

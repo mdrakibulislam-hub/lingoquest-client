@@ -8,6 +8,8 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
 import PrivetRoute from "./PrivetRoute";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+
 
 const router = createBrowserRouter([
     {
@@ -21,10 +23,10 @@ const router = createBrowserRouter([
             { path: "/login", element: <Login></Login> },
             { path: "/registration", element: <Registration></Registration> },
             { path: "/forgetpassword", element: <ForgetPassword></ForgetPassword> },
-
         ]
 
-    }
+    },
+    { path: "/dashboard", element: <Dashboard></Dashboard> },
 ])
 
 export default router;

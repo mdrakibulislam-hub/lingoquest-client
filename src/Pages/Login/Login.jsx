@@ -15,10 +15,10 @@ const Login = () => {
     const location = useLocation();
     console.log('login page location', location)
     const from = location.state?.from?.pathname || '/'
+    console.log(location.state?.from?.pathname);
 
 
-
-    const { user, setUser, handleFormLogin, handleGoogleLogin, handleGithubLogin } = useContext(AuthContext);
+    const { user, setUser, handleFormLogin, handleGoogleLogin } = useContext(AuthContext);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
 
@@ -44,7 +44,7 @@ const Login = () => {
 
         handleFormLogin(email, password).then(result => {
             console.log("success is", result)
-            navigate(from, { replace: true })
+            navigate(from)
             setLoginError("")
         })
             .catch(error => setLoginError(error.message))
@@ -55,18 +55,12 @@ const Login = () => {
     const handleGoogleSignInClick = () => {
         handleGoogleLogin().then(result => {
             setUser(result.user)
-            navigate(from, { replace: true })
+            navigate(from)
         })
             .catch(error => console.log("error is", error))
     }
 
-    const handleGithubSignInClick = () => {
-        handleGithubLogin().then(result => {
-            setUser(result.user)
-            navigate(from, { replace: true })
-        })
-            .catch(error => console.log("error is", error))
-    }
+
 
 
 
@@ -124,7 +118,7 @@ const Login = () => {
                         Forget Password?
                     </Link>
                     <div className="mt-6">
-                        <button type='submit' className="btn border-none bg-secondary text-white hover:bg-neutral hover:text-white w-full">
+                        <button type='submit' className="btn border-none bg-secondary text-primary normal-case hover:bg-neutral hover:text-white w-full">
                             Login
                         </button>
                     </div>
@@ -139,14 +133,9 @@ const Login = () => {
                 <div className='flex gap-4 justify-center items-center my-8'>
 
 
-                    <button onClick={handleGoogleSignInClick} className='flex tooltip gap-2 items-center text-white btn bg-blue-700 hover:bg-blue-800 border-none' data-tip="Login with Google">
+                    <button onClick={handleGoogleSignInClick} className='flex tooltip gap-2 items-center text-white normal-case btn bg-blue-700 hover:bg-blue-800 border-none' data-tip="Login with Google">
                         <span>Login with</span> <FaGoogle></FaGoogle>
                     </button>
-
-                    <button onClick={handleGithubSignInClick} className='flex tooltip gap-2 items-center text-white btn bg-gray-800 hover:bg-gray-900 border-none' data-tip="Login with GitHub">
-                        <span>Login with</span> <FaGithub></FaGithub>
-                    </button>
-
 
 
                 </div>

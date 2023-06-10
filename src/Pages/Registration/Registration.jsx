@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 

@@ -9,7 +9,7 @@ const InstructorCard = ({ data }) => {
                 <h1 className="font-playfair text-xl text-secondary font-semibold">{name}</h1>
                 <p>Email: {email}</p>
                 <p>Course: {title}</p>
-                <Link to={`/instructor/${_id}`} className="btn btn-sm btn-secondary rounded normal-case">See Classes</Link>
+                <Link to={`/instructor/${_id}`} className="btn btn-sm btn-secondary rounded normal-case">See Courses</Link>
             </div>
         </div>
     );

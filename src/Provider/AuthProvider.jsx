@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/firebase.config';
 
 
@@ -10,7 +10,6 @@ const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
     const [loading, setLoading] = useState(true);
     const googleAuthProvider = new GoogleAuthProvider();
-    const githubAuthProvider = new GithubAuthProvider();
 
     const createUserHandler = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -25,9 +24,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleAuthProvider);
     }
 
-    const handleGithubLogin = () => {
-        return signInWithPopup(auth, githubAuthProvider);
-    }
+
 
     const handleForgetPasswordReset = (email) => {
         return sendPasswordResetEmail(auth, email);
@@ -57,7 +54,7 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    const authInfo = { user, setUser, handleFormLogin, handleGoogleLogin, handleGithubLogin, createUserHandler, handleLogout, handleForgetPasswordReset, handleUpdateProfile, loading }
+    const authInfo = { user, setUser, handleFormLogin, handleGoogleLogin, createUserHandler, handleLogout, handleForgetPasswordReset, handleUpdateProfile, loading }
 
     // console.log(user?.displayName);
 
