@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2'
 
 const Registration = () => {
 
@@ -29,7 +31,7 @@ const Registration = () => {
     const [alreadyInUse, setAlreadyInUse] = useState("")
 
 
-    const { createUserHandler, setUser, user } = useContext(AuthContext);
+    const { createUserHandler, setUser, user, updateUserProfile } = useContext(AuthContext);
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -42,9 +44,46 @@ const Registration = () => {
         else if (!photoURL) { setImageURLError("Please provide valid photo url"); return }
 
         createUserHandler(email, password).then(result => {
-            setUser(result.user)
-            navigate("/")
-            setAlreadyInUse("")
+
+            const loggedUser = result.user;
+            console.log(loggedUser);
+
+
+
+            updateUserProfile(name, photoURL)
+                .then(() => {
+                    const dbUserDetails = { name: name, email: email, role: "user" }
+                    fetch('http://localhost:5000/allusers', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(dbUserDetails)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Registration successful.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+
+                                setUser(result.user)
+                                // navigate("/")
+                                setAlreadyInUse("")
+
+                                // navigate('/');
+                            }
+                        })
+
+
+
+                })
 
         })
             .catch(error => setAlreadyInUse(error.message))
@@ -208,6 +247,7 @@ const Registration = () => {
                     </p>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

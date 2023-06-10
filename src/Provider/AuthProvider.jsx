@@ -36,6 +36,12 @@ const AuthProvider = ({ children }) => {
         })
     }
 
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        });
+    }
+
     const handleLogout = () => {
         return signOut(auth)
     }
@@ -54,7 +60,7 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    const authInfo = { user, setUser, handleFormLogin, handleGoogleLogin, createUserHandler, handleLogout, handleForgetPasswordReset, handleUpdateProfile, loading }
+    const authInfo = { user, setUser, handleFormLogin, handleGoogleLogin, createUserHandler, handleLogout, handleForgetPasswordReset, handleUpdateProfile, updateUserProfile, loading }
 
     // console.log(user?.displayName);
 

@@ -56,6 +56,31 @@ const Login = () => {
         handleGoogleLogin().then(result => {
             setUser(result.user)
             navigate(from)
+
+
+
+            const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user" }
+            fetch('http://localhost:5000/allusers', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(dbUserDetails)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+
+
+                        setUser(result.user)
+                        setAlreadyInUse("")
+                    }
+                })
+
+
+
+
+
         })
             .catch(error => console.log("error is", error))
     }
