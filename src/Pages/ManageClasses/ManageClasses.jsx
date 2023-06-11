@@ -1,9 +1,10 @@
 import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
 import ManageClassTableItem from "../../Components/ManageClassTableItem/ManageClassTableItem";
+import useAllClasses from "../../Hooks/useAllClasses";
 import useClasses from "../../Hooks/useClasses";
 
 const ManageClasses = () => {
-    const classes = useClasses();
+    const classes = useAllClasses();
     console.log(classes);
     return (
         <div>
