@@ -15,7 +15,7 @@ const SelectClassTableItem = ({ data, index }) => {
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src={image} alt="Avatar Tailwind CSS Component" />
+                            <img src={image} alt="Thumbnail of course" />
                         </div>
                     </div>
                     <div>
@@ -26,9 +26,9 @@ const SelectClassTableItem = ({ data, index }) => {
             <td>
                 <p>৳{price}</p>
             </td>
-            <td className='flex gap-2'>
-                <button className="btn btn-sm bg-red-600 text-white outline-none border-none hover:text-black">Delete</button>
-                <button className="btn btn-sm btn-info">Pay</button>
+            <td className='flex gap-2 items-center justify-center'>
+                <button className="btn btn-sm bg-red-600 text-white outline-none border-none hover:bg-red-600">Delete</button>
+                <button className="btn btn-sm btn-info">Payment</button>
             </td>
 
         </tr>

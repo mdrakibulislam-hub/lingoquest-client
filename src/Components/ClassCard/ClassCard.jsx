@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useUserRole from '../../Hooks/useUserRole';
 
 const ClassCard = ({ data }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const [role, loading] = useUserRole();
     const handleSelect = () => {
         if (user && user.email) {
             const cartItem = { courseId: _id, title, image, price, email: user.email }
@@ -53,8 +55,8 @@ const ClassCard = ({ data }) => {
             <p>Instructor: {instructorName}</p>
             <p>Seats available: {availableSeats}</p>
             <p>Fee: ৳{price}</p>
-            <button onClick={handleSelect} className='btn btn-secondary normal-case'>Select</button>
-        </div>
+            <button disabled={role !== "user" && true} onClick={handleSelect} className='btn btn-secondary normal-case'>Select</button>
+        </div >
     );
 };
 

@@ -1,6 +1,7 @@
 import { Typewriter } from 'react-simple-typewriter'
 import { FaSearch } from "react-icons/fa";
 
+
 const HomeBanner = () => {
 
     // :::::::::react simple type writer::::::::::
