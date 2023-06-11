@@ -1,25 +1,42 @@
+import { useContext } from "react";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import useUserRole from "../../Hooks/useUserRole";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const DashboardHome = () => {
     const [role, loading] = useUserRole();
+    const { user } = useContext(AuthContext);
     console.log(role, loading);
-    if (role == "user") {
+    if (loading) {
         return (
             <div>
-                <h1>Howdy, user</h1>
+                <LoadingSpinner></LoadingSpinner>
+            </div>
+        );
+    }
+    else if (role == "user") {
+        return (
+            <div>
+                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
+                <p>Welcome to LingoQuest</p>
             </div>
         );
     } else if (role == "instructor") {
         return (
             <div>
-                <h1>Howdy, instructor</h1>
+                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
+                <p>Welcome to LingoQuest</p>
             </div>
         );
     }
     else if (role == "admin") {
         return (
             <div>
-                <h1>Howdy, Admin</h1>
+                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
+                <p>Welcome to LingoQuest</p>
             </div>
         );
     }

@@ -9,7 +9,7 @@ const ClassCard = ({ data }) => {
     const { user } = useContext(AuthContext);
     const handleSelect = () => {
         if (user && user.email) {
-            const cartItem = { menuItemId: _id, name, image, price, email: user.email, payment: "unpaid" }
+            const cartItem = { courseId: _id, title, image, price, email: user.email }
             fetch('http://localhost:5000/cart', {
                 method: 'POST',
                 headers: {

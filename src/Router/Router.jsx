@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             { path: "/forgetpassword", element: <ForgetPassword></ForgetPassword> },
             {
                 path: "/dashboard", element: <Dashboard></Dashboard>, children: [
-                    { path: "/dashboard", element: <DashboardHome></DashboardHome> },
+                    { path: "/dashboard", element: <PrivetRoute><DashboardHome></DashboardHome></PrivetRoute> },
                     { path: "/dashboard/selectedcourses", element: <SelectedCourses></SelectedCourses> },
                     { path: "/dashboard/enrolledcourses", element: <EnrolledCourses></EnrolledCourses> },
                     { path: "/dashboard/addclasses", element: <AddClasses></AddClasses> },
