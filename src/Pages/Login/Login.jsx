@@ -54,10 +54,8 @@ const Login = () => {
 
     const handleGoogleSignInClick = () => {
         handleGoogleLogin().then(result => {
-            setUser(result.user)
-            navigate(from)
-
-
+            // setUser(result.user)
+            // navigate(from)
 
             const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user", image: result.user.photoURL }
             fetch('http://localhost:5000/allusers', {

@@ -1,23 +1,24 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ManageUserTableItem = ({ data, index }) => {
     const { _id, name, image, email, role } = data;
     console.log(data);
-
+    const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = () => {
-        axios.patch(`http://localhost:5000/updaterole/admin/${_id}`).then(data => { console.log(data.data); })
+        axiosSecure.patch(`http://localhost:5000/updaterole/admin/${_id}`).then(data => { console.log(data.data); })
     }
 
 
     const handleMakeInstructor = () => {
-        axios.patch(`http://localhost:5000/updaterole/instructor/${_id}`).then(data => {
+        axiosSecure.patch(`http://localhost:5000/updaterole/instructor/${_id}`).then(data => {
             if (data.data.modifiedCount > 0) {
                 const instructorData = {
                     image, name, email, totalStudents: 0, title: null
                 }
-                axios.post('http://localhost:5000/instructor', (instructorData)).then(data => { console.log(data.data); })
+                axiosSecure.post('http://localhost:5000/instructor', (instructorData)).then(data => { console.log(data.data); })
             } else {
                 console.log(data.data);
             }

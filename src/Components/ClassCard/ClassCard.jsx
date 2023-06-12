@@ -3,11 +3,14 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useUserRole from '../../Hooks/useUserRole';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ClassCard = ({ data }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
+
     const [role, loading] = useUserRole();
     const handleSelect = () => {
         if (user && user.email) {

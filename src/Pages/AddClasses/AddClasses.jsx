@@ -4,10 +4,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AddClasses = () => {
     const { user, loading } = useContext(AuthContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [axiosSecure] = useAxiosSecure();
 
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`
 
@@ -27,7 +29,7 @@ const AddClasses = () => {
                     const imgURL = imgResponse.data.display_url;
                     const updateData = { ...data, price: parseFloat(data.price).toFixed(2), image: imgURL, status: "pending", totalStudents: 0, adminsFeedback: null }
 
-                    axios.post('http://localhost:5000/allclasses', (updateData)).then(data => {
+                    axiosSecure.post('http://localhost:5000/allclasses', (updateData)).then(data => {
                         console.log(data.data);
                         if (data.data.insertedId) {
                             Swal.fire(

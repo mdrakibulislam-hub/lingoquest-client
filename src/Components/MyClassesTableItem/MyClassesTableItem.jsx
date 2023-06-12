@@ -1,11 +1,13 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyClassesTableItem = ({ data, index }) => {
 
+    const [axiosSecure] = useAxiosSecure();
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const handleDelete = () => {
-        axios.delete(`http://localhost:5000/allclasses/delete/${_id}`).then(data => {
+        axiosSecure.delete(`http://localhost:5000/allclasses/delete/${_id}`).then(data => {
 
             Swal.fire(
                 'Deleted',

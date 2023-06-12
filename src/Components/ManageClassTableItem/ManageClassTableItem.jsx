@@ -1,17 +1,33 @@
 import axios from "axios";
 import FeedBackModal from "../FeedBackModal/FeedBackModal";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const ManageClassTableItem = ({ data, index }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
-
+    const [axiosSecure] = useAxiosSecure();
 
     const handleClassReject = () => {
         console.log(_id);
-        axios.patch(`http://localhost:5000/classes/reject/${_id}`).then(data => { console.log(data.data); })
+        axiosSecure.patch(`http://localhost:5000/classes/reject/${_id}`).then(data => {
+            console.log(data.data);
+            Swal.fire({
+                icon: 'error',
+                title: 'Rejected',
+                text: 'This class has been rejected!',
+            })
+        })
     }
 
     const handleClassApproved = () => {
-        axios.patch(`http://localhost:5000/classes/approved/${_id}`).then(data => { console.log(data.data); })
+        axiosSecure.patch(`http://localhost:5000/classes/approved/${_id}`).then(data => {
+            console.log(data.data);
+            Swal.fire(
+                'Approved',
+                'This class has been approved!',
+                'success'
+            )
+        })
     }
 
     return (

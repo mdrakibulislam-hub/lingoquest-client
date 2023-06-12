@@ -1,14 +1,24 @@
 import { data } from 'autoprefixer';
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const FeedBackModal = ({ id }) => {
+    const [axiosSecure] = useAxiosSecure();
     const feedback = useRef('');
     const handleSubmit = (event) => {
         event.preventDefault();
         const userFeedback = feedback.current.value
         console.log(userFeedback);
-        axios.patch(`http://localhost:5000/sendfeedback/class/${id}`, { userFeedback }).then(data => { console.log(data.data); })
+        axiosSecure.patch(`http://localhost:5000/sendfeedback/class/${id}`, { userFeedback }).then(data => {
+            console.log(data.data);
+            Swal.fire(
+                'Feedback Sent',
+                'Your feedback has been sent to the instructor',
+                'success'
+            )
+        })
     }
 
 

@@ -3,15 +3,17 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import axios from "axios";
 import MyClassesTableItem from "../../Components/MyClassesTableItem/MyClassesTableItem";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const MyClasses = () => {
 
     const { user, loading } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
+    const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
+        axiosSecure.get(`http://localhost:5000/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
     }, [user])
 
     console.log(classes);
