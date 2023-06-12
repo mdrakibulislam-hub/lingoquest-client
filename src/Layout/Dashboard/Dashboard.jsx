@@ -9,6 +9,8 @@ const Dashboard = () => {
         <>
 
             <div className='main-container my-16'>
+
+
                 <div className="drawer lg:drawer-open">
                     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content flex flex-col mx-16">
@@ -25,6 +27,7 @@ const Dashboard = () => {
                             {/* Sidebar content here */}
                             <li><Link to={"/dashboard"}><FaHome></FaHome> Home</Link></li>
                             <li><Link to={"/dashboard/editprofile"}><FaUser></FaUser> Edit Profile</Link></li>
+
 
 
                             {role == "user" && <>
