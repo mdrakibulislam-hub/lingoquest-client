@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 import whyImage from '../../assets/images/why.webp';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 
 const WhyToLearn = () => {
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
     return (
-        <div className='flex flex-col md:flex-row gap-4 items-center main-container my-16'>
+        <div data-aos="fade-up" className='flex flex-col md:flex-row gap-4 items-center main-container my-16'>
             <figure className='w-1/4'><img className='w-full' src={whyImage} alt="" /></figure>
             <div className='w-3/4'>
                 <h1 className='font-playfair text-center md:text-left text-4xl font-bold text-neutral'>Why to learn languages?</h1>

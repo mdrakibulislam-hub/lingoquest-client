@@ -1,10 +1,20 @@
 import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import SelectClassTableItem from "../../Components/SelectClassTableItem/SelectClassTableItem";
 import useSelectCart from "../../Hooks/useSelectCart";
 
 const SelectedCourses = () => {
     const [courses, loading] = useSelectCart();
     console.log(courses);
+
+    if (loading) {
+        return (
+            <div>
+                <LoadingSpinner></LoadingSpinner>
+            </div>
+        );
+    }
+
     return (
         <div>
 

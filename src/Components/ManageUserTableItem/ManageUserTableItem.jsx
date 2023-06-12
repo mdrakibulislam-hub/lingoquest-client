@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const ManageUserTableItem = ({ data, index }) => {
     const { _id, name, image, email, role } = data;
@@ -8,7 +11,7 @@ const ManageUserTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = () => {
-        axiosSecure.patch(`http://localhost:5000/updaterole/admin/${_id}`).then(data => { console.log(data.data); })
+        axiosSecure.patch(`http://localhost:5000/updaterole/admin/${_id}`).then(data => { console.log(data.data); window.location.reload() })
     }
 
 
@@ -21,15 +24,19 @@ const ManageUserTableItem = ({ data, index }) => {
                 axiosSecure.post('http://localhost:5000/instructor', (instructorData)).then(data => { console.log(data.data); })
             } else {
                 console.log(data.data);
+                window.location.reload()
             }
         })
     }
 
-
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
 
-        <tr>
+        <tr data-aos="fade-up" >
             <th>
                 <label>
                     {index + 1}

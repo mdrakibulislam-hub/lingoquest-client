@@ -17,6 +17,7 @@ const Navbar = () => {
         <li><Link to={"/instructors"}>Instructors</Link></li>
         <li><Link to={"/dashboard"}>Dashboard</Link></li>
         {/* <li><Link to={"/login"}>Login</Link></li> */}
+        {user && <li className="tooltip hidden lg:block tooltip-bottom" data-tip={user.displayName}>{user.photoURL ? <Link><figure className='w-14 h-fit'><img className='w-full rounded-full' src={user.photoURL && user.photoURL} alt="" /></figure></Link> : <Link><figure className='w-14 h-fit'><img className='w-full rounded-full' src="https://i.ibb.co/K798Km5/user.jpg" alt="" /></figure></Link>}</li>}
         {user ?
             <li className="" onClick={handleLogoutButton}><Link
             >
@@ -52,7 +53,7 @@ const Navbar = () => {
                     <Link to={"/"}><img className="w-40" src={logo} alt="" /></Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 flex items-center">
                         {menuItem}
                     </ul>
                 </div>

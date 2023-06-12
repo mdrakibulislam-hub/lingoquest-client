@@ -17,7 +17,7 @@ import MyClasses from "../Pages/MyClasses/MyClasses";
 import ManageClasses from "../Pages/ManageClasses/ManageClasses";
 import ManageUsers from "../Pages/ManageUsers/ManageUsers";
 import EditProfile from "../Pages/EditProfile/EditProfile";
-
+import Payment from "../Pages/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +41,7 @@ const router = createBrowserRouter([
                     { path: "/dashboard/manageclasses", element: <ManageClasses></ManageClasses> },
                     { path: "/dashboard/manageusers", element: <ManageUsers></ManageUsers> },
                     { path: "/dashboard/editprofile", element: <EditProfile></EditProfile> },
+                    { path: "/dashboard/payment/:id", element: <Payment></Payment> },
                 ]
             },
         ]

@@ -5,11 +5,19 @@ import axios from "axios";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const AddClasses = () => {
     const { user, loading } = useContext(AuthContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [axiosSecure] = useAxiosSecure();
+
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`
 
@@ -51,7 +59,7 @@ const AddClasses = () => {
     )
 
     return (
-        <div>
+        <div data-aos="fade-up" >
             <h1 className="text-3xl font-bold font-playfair text-neutral text-center mb-12">Publish your classes</h1>
 
 

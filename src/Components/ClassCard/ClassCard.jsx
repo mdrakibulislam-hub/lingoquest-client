@@ -4,27 +4,28 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useUserRole from '../../Hooks/useUserRole';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const ClassCard = ({ data }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     const [role, loading] = useUserRole();
     const handleSelect = () => {
         if (user && user.email) {
-            const cartItem = { courseId: _id, title, image, price, email: user.email }
-            fetch('http://localhost:5000/cart', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(cartItem)
-            })
-                .then(res => res.json())
+            const cartItem = { courseId: _id, title, image, price, email: user.email, payment: "unpaid" }
+            axiosSecure.post('http://localhost:5000/cart', (cartItem))
                 .then(data => {
-                    if (data.insertedId) {
+
+                    if (data.data.insertedId) {
                         // refetch(); // refetch cart to update the number of items in the cart
                         Swal.fire({
                             position: 'top-end',
@@ -52,7 +53,7 @@ const ClassCard = ({ data }) => {
         }
     }
     return (
-        <div className='flex flex-col gap-3 bg-primary p-4 rounded-lg'>
+        <div data-aos="fade-up" className='flex flex-col gap-3 bg-primary p-4 rounded-lg'>
             <figure><img className='w-full rounded-md' src={image} alt="" /></figure>
             <h1 className='text-2xl font-bold font-playfair text-secondary'>{title}</h1>
             <p>Instructor: {instructorName}</p>

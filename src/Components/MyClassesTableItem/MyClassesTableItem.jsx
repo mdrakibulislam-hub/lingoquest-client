@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const MyClassesTableItem = ({ data, index }) => {
 
@@ -14,11 +17,16 @@ const MyClassesTableItem = ({ data, index }) => {
                 'You class has been deleted!',
                 'success'
             )
+            window.location.reload()
         })
     }
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
     return (
 
-        <tr>
+        <tr data-aos="fade-up" >
             <th>
                 <label>
                     {index + 1}

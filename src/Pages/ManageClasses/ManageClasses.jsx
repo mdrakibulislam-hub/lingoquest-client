@@ -4,7 +4,7 @@ import useAllClasses from "../../Hooks/useAllClasses";
 import useClasses from "../../Hooks/useClasses";
 
 const ManageClasses = () => {
-    const classes = useAllClasses();
+    const [classes, control, setControl] = useAllClasses();
     console.log(classes);
     return (
         <div>

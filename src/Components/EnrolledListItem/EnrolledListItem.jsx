@@ -1,39 +1,16 @@
-import axios from 'axios';
 import React from 'react';
-import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
-
-const SelectClassTableItem = ({ data, index }) => {
+const EnrolledListItem = ({ data, index }) => {
     const {
-        _id, courseId, title, image, price, email
+        _id, courseId, title, image, price, email, payment
     } = data
-
-    const [axiosSecure] = useAxiosSecure();
-
-    const handleDelete = () => {
-        axiosSecure.delete(`http://localhost:5000/user/selectedclasses/${_id}`).then(data => {
-
-            if (data.data.deletedCount > 0) {
-                Swal.fire(
-                    'Deleted!',
-                    `You have deleted ${title} from your selected list`,
-                    'success'
-                )
-            }
-        })
-    }
-
     //useEffect
     useEffect(() => {
         AOS.init();
     }, [])
-
-
     return (
         <tr data-aos="fade-up" >
             <th>
@@ -57,12 +34,11 @@ const SelectClassTableItem = ({ data, index }) => {
                 <p>৳{price}</p>
             </td>
             <td className='flex gap-2 items-center justify-center'>
-                <button onClick={handleDelete} className="btn btn-sm bg-red-600 text-white outline-none border-none hover:bg-red-600">Delete</button>
-                <Link to={`/dashboard/payment/${_id}`}><button className="btn btn-sm btn-info">Payment</button></Link>
+                <button className="btn btn-sm bg-green-600 text-white outline-none border-none hover:bg-red-600">{payment}</button>
             </td>
 
         </tr>
     );
 };
 
-export default SelectClassTableItem;
+export default EnrolledListItem;

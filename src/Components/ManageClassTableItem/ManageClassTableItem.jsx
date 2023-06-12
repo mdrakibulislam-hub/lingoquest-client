@@ -2,36 +2,50 @@ import axios from "axios";
 import FeedBackModal from "../FeedBackModal/FeedBackModal";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAllClasses from "../../Hooks/useAllClasses";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const ManageClassTableItem = ({ data, index }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const [axiosSecure] = useAxiosSecure();
+    const [classes, control, setControl] = useAllClasses();
 
     const handleClassReject = () => {
         console.log(_id);
         axiosSecure.patch(`http://localhost:5000/classes/reject/${_id}`).then(data => {
             console.log(data.data);
+            setControl(!control)
             Swal.fire({
                 icon: 'error',
                 title: 'Rejected',
                 text: 'This class has been rejected!',
             })
+            window.location.reload()
         })
     }
 
     const handleClassApproved = () => {
         axiosSecure.patch(`http://localhost:5000/classes/approved/${_id}`).then(data => {
             console.log(data.data);
+            setControl(!control)
             Swal.fire(
                 'Approved',
                 'This class has been approved!',
                 'success'
             )
+            window.location.reload()
         })
     }
 
+    //useEffect
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
     return (
-        <tr>
+        <tr data-aos="fade-up" >
             <th>
                 <label>
                     {index + 1}
