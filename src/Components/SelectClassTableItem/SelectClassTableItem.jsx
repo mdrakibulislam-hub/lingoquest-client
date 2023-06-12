@@ -1,9 +1,25 @@
+import axios from 'axios';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const SelectClassTableItem = ({ data, index }) => {
     const {
         _id, courseId, title, image, price, email
     } = data
+
+    const handleDelete = () => {
+        axios.delete(`http://localhost:5000/user/selectedclasses/${_id}`).then(data => {
+
+            if (data.data.deletedCount > 0) {
+                Swal.fire(
+                    'Deleted!',
+                    `You have deleted ${title} from your selected list`,
+                    'success'
+                )
+            }
+        })
+    }
+
     return (
         <tr>
             <th>
@@ -27,7 +43,7 @@ const SelectClassTableItem = ({ data, index }) => {
                 <p>৳{price}</p>
             </td>
             <td className='flex gap-2 items-center justify-center'>
-                <button className="btn btn-sm bg-red-600 text-white outline-none border-none hover:bg-red-600">Delete</button>
+                <button onClick={handleDelete} className="btn btn-sm bg-red-600 text-white outline-none border-none hover:bg-red-600">Delete</button>
                 <button className="btn btn-sm btn-info">Payment</button>
             </td>
 
