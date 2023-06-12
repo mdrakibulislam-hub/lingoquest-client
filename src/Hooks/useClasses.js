@@ -8,7 +8,7 @@ const useClasses = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure('http://localhost:5000/allclasses').then(response => setClasses(response.data))
+        axiosSecure('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses').then(response => setClasses(response.data))
     }, [])
 
     return classes;

@@ -10,7 +10,7 @@ const useSelectCart = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get(`http://localhost:5000/user/selectedclasses/${user?.email}`).then(data => setCourses(data.data))
+        axiosSecure.get(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/user/selectedclasses/${user?.email}`).then(data => setCourses(data.data))
     }, [user])
 
     return [courses, loading];

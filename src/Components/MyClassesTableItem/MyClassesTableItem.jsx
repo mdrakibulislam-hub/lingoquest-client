@@ -10,7 +10,7 @@ const MyClassesTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const handleDelete = () => {
-        axiosSecure.delete(`http://localhost:5000/allclasses/delete/${_id}`).then(data => {
+        axiosSecure.delete(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses/delete/${_id}`).then(data => {
 
             Swal.fire(
                 'Deleted',

@@ -14,7 +14,7 @@ const ManageClassTableItem = ({ data, index }) => {
 
     const handleClassReject = () => {
         console.log(_id);
-        axiosSecure.patch(`http://localhost:5000/classes/reject/${_id}`).then(data => {
+        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/reject/${_id}`).then(data => {
             console.log(data.data);
             setControl(!control)
             Swal.fire({
@@ -27,7 +27,7 @@ const ManageClassTableItem = ({ data, index }) => {
     }
 
     const handleClassApproved = () => {
-        axiosSecure.patch(`http://localhost:5000/classes/approved/${_id}`).then(data => {
+        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/approved/${_id}`).then(data => {
             console.log(data.data);
             setControl(!control)
             Swal.fire(

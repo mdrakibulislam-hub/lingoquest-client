@@ -22,7 +22,7 @@ const ClassCard = ({ data }) => {
     const handleSelect = () => {
         if (user && user.email) {
             const cartItem = { courseId: _id, title, image, price, email: user.email, payment: "unpaid" }
-            axiosSecure.post('http://localhost:5000/cart', (cartItem))
+            axiosSecure.post('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/cart', (cartItem))
                 .then(data => {
 
                     if (data.data.insertedId) {

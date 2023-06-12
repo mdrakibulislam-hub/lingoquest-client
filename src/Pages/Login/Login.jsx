@@ -58,7 +58,7 @@ const Login = () => {
             // navigate(from)
 
             const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user", image: result.user.photoURL }
-            fetch('http://localhost:5000/allusers', {
+            fetch('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allusers', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

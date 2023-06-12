@@ -86,10 +86,10 @@ const CheckoutForm = ({ price, id }) => {
             //             // display confirm
             //         }
             //     })
-            axiosSecure.patch(`http://localhost:5000/cart/pay/${id}`).then(data => {
+            axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/cart/pay/${id}`).then(data => {
                 console.log(data.data);
                 if (data.data.matchedCount > 0) {
-                    axiosSecure.patch(`http://localhost:5000/allclasses/${id}`).then(data => { console.log(data.data); })
+                    axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses/${id}`).then(data => { console.log(data.data); })
                     Swal.fire(
                         'Congrats!',
                         'You have successfully enrolled fot the course!',

@@ -12,7 +12,7 @@ const Payment = () => {
     console.log(id);
     const [price, setPrice] = useState(null);
     useEffect(() => {
-        axios.get(`http://localhost:5000/cart/price/${id}`).then(data => {
+        axios.get(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/cart/price/${id}`).then(data => {
             setPrice(data.data.price);
         })
     }, [id])

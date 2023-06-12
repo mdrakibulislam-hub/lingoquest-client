@@ -37,7 +37,7 @@ const AddClasses = () => {
                     const imgURL = imgResponse.data.display_url;
                     const updateData = { ...data, price: parseFloat(data.price).toFixed(2), image: imgURL, status: "pending", totalStudents: 0, adminsFeedback: null }
 
-                    axiosSecure.post('http://localhost:5000/allclasses', (updateData)).then(data => {
+                    axiosSecure.post('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses', (updateData)).then(data => {
                         console.log(data.data);
                         if (data.data.insertedId) {
                             Swal.fire(

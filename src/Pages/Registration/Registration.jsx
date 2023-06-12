@@ -53,7 +53,7 @@ const Registration = () => {
             updateUserProfile(name, photoURL)
                 .then(() => {
                     const dbUserDetails = { name: name, email: email, role: "user", image: photoURL }
-                    fetch('http://localhost:5000/allusers', {
+                    fetch('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allusers', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

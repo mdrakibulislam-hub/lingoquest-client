@@ -8,7 +8,7 @@ const useAllClasses = () => {
     const [axiosSecure] = useAxiosSecure();
     const [control, setControl] = useState(true);
     useEffect(() => {
-        axiosSecure('http://localhost:5000/allclassesforadmin').then(response => setClasses(response.data))
+        axiosSecure('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclassesforadmin').then(response => setClasses(response.data))
     }, [control, axiosSecure])
 
     return [classes, control, setControl];

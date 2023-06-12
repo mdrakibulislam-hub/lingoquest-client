@@ -11,17 +11,17 @@ const ManageUserTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = () => {
-        axiosSecure.patch(`http://localhost:5000/updaterole/admin/${_id}`).then(data => { console.log(data.data); window.location.reload() })
+        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/updaterole/admin/${_id}`).then(data => { console.log(data.data); window.location.reload() })
     }
 
 
     const handleMakeInstructor = () => {
-        axiosSecure.patch(`http://localhost:5000/updaterole/instructor/${_id}`).then(data => {
+        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/updaterole/instructor/${_id}`).then(data => {
             if (data.data.modifiedCount > 0) {
                 const instructorData = {
                     image, name, email, totalStudents: 0, title: null
                 }
-                axiosSecure.post('http://localhost:5000/instructor', (instructorData)).then(data => { console.log(data.data); })
+                axiosSecure.post('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/instructor', (instructorData)).then(data => { console.log(data.data); })
             } else {
                 console.log(data.data);
                 window.location.reload()

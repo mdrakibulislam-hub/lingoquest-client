@@ -16,7 +16,7 @@ const SelectClassTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
 
     const handleDelete = () => {
-        axiosSecure.delete(`http://localhost:5000/user/selectedclasses/${_id}`).then(data => {
+        axiosSecure.delete(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/user/selectedclasses/${_id}`).then(data => {
 
             if (data.data.deletedCount > 0) {
                 Swal.fire(

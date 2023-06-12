@@ -7,7 +7,7 @@ const useInstructor = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get("http://localhost:5000/instructors").then(response => setInstructor(response.data))
+        axiosSecure.get("https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/instructors").then(response => setInstructor(response.data))
     }, [])
 
     return instructor;

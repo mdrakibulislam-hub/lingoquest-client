@@ -13,7 +13,7 @@ const MyClasses = () => {
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get(`http://localhost:5000/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
+        axiosSecure.get(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
     }, [user])
 
     console.log(classes);
