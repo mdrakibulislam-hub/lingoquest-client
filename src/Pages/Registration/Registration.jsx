@@ -52,7 +52,7 @@ const Registration = () => {
 
             updateUserProfile(name, photoURL)
                 .then(() => {
-                    const dbUserDetails = { name: name, email: email, role: "user" }
+                    const dbUserDetails = { name: name, email: email, role: "user", image: photoURL }
                     fetch('http://localhost:5000/allusers', {
                         method: 'POST',
                         headers: {

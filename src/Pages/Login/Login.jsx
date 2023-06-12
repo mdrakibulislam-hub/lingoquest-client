@@ -59,7 +59,7 @@ const Login = () => {
 
 
 
-            const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user" }
+            const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user", image: result.user.photoURL }
             fetch('http://localhost:5000/allusers', {
                 method: 'POST',
                 headers: {

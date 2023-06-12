@@ -17,7 +17,7 @@ const DashboardHome = () => {
     else if (role == "user") {
         return (
             <div>
-                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <img className="rounded-full" src={user?.photoURL} alt="" />
                 <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
                 <p>Welcome to LingoQuest</p>
             </div>
@@ -25,7 +25,7 @@ const DashboardHome = () => {
     } else if (role == "instructor") {
         return (
             <div>
-                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <img className="rounded-full" src={user?.photoURL} alt="" />
                 <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
                 <p>Welcome to LingoQuest</p>
             </div>
@@ -34,7 +34,7 @@ const DashboardHome = () => {
     else if (role == "admin") {
         return (
             <div>
-                <img className="rounded-full mx-auto" src={user?.photoURL} alt="" />
+                <img className="rounded-full" src={user?.photoURL} alt="" />
                 <h1 className="text-neutral text-3xl font-bold font-playfair">Howdy, {role}</h1>
                 <p>Welcome to LingoQuest</p>
             </div>

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React from 'react';
 import Swal from 'sweetalert2';
 
 const ManageUserTableItem = ({ data, index }) => {
-    const { _id, name, email, role } = data;
+    const { _id, name, image, email, role } = data;
+    console.log(data);
 
 
     const handleMakeAdmin = () => {
@@ -12,7 +12,16 @@ const ManageUserTableItem = ({ data, index }) => {
 
 
     const handleMakeInstructor = () => {
-        axios.patch(`http://localhost:5000/updaterole/instructor/${_id}`).then(data => { console.log(data.data); })
+        axios.patch(`http://localhost:5000/updaterole/instructor/${_id}`).then(data => {
+            if (data.data.modifiedCount > 0) {
+                const instructorData = {
+                    image, name, email, totalStudents: 0, title: null
+                }
+                axios.post('http://localhost:5000/instructor', (instructorData)).then(data => { console.log(data.data); })
+            } else {
+                console.log(data.data);
+            }
+        })
     }
 
 
