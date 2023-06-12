@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import EnrolledListItem from "../../Components/EnrolledListItem/EnrolledListItem";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import usePaidClass from "../../Hooks/usePaidClass";
 
 const EnrolledCourses = () => {
+
+    useEffect(() => {
+        document.title = "Enrolled Courses | Lingoquest"
+    }, [])
     const [courses, loading] = usePaidClass();
     console.log(courses);
 

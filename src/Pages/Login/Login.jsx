@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
 const Login = () => {
 
-
+    const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
-        document.title = "Login | Vault of marvel"
+        document.title = "Login | Lingoquest"
     }, [])
 
     const navigate = useNavigate();
@@ -58,20 +59,13 @@ const Login = () => {
             // navigate(from)
 
             const dbUserDetails = { name: result.user.displayName, email: result.user.email, role: "user", image: result.user.photoURL }
-            fetch('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allusers', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(dbUserDetails)
-            })
-                .then(res => res.json())
+            axiosSecure.post('/allusers', (dbUserDetails))
                 .then(data => {
-                    if (data.insertedId) {
+                    if (data.data.insertedId) {
 
 
                         setUser(result.user)
-                        setAlreadyInUse("")
+
                     }
                 })
 

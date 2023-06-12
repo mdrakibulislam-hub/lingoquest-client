@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import SelectClassTableItem from "../../Components/SelectClassTableItem/SelectClassTableItem";
 import useSelectCart from "../../Hooks/useSelectCart";
 
 const SelectedCourses = () => {
+
+    useEffect(() => {
+        document.title = "Selected Class | Lingoquest"
+    }, [])
     const [courses, loading] = useSelectCart();
     console.log(courses);
 

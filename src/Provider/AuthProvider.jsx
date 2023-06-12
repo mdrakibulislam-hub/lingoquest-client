@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
             console.log('logged in user inside auth state observer', loggedUser)
 
             if (loggedUser) {
-                axios.post('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/jwt', ({ email: loggedUser.email }))
+                axios.post('https://lingoquest-server-api.vercel.app/jwt', ({ email: loggedUser.email }))
                     .then(data => {
 
                         localStorage.setItem('access-token', data.data.token)

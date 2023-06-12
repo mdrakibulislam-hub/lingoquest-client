@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const ForgetPassword = () => {
 
     useEffect(() => {
-        document.title = "Reset Password | Vault of marvel"
+        document.title = "Reset Password | Lingoquest"
     }, [])
 
 

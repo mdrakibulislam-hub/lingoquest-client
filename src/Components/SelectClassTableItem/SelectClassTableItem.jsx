@@ -3,9 +3,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+
 
 
 const SelectClassTableItem = ({ data, index }) => {
@@ -16,7 +14,7 @@ const SelectClassTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
 
     const handleDelete = () => {
-        axiosSecure.delete(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/user/selectedclasses/${_id}`).then(data => {
+        axiosSecure.delete(`/user/selectedclasses/${_id}`).then(data => {
 
             if (data.data.deletedCount > 0) {
                 Swal.fire(
@@ -28,14 +26,10 @@ const SelectClassTableItem = ({ data, index }) => {
         })
     }
 
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
 
 
     return (
-        <tr data-aos="fade-up" >
+        <tr>
             <th>
                 <label>
                     {index + 1}

@@ -1,18 +1,13 @@
 import React from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+
 
 const EnrolledListItem = ({ data, index }) => {
     const {
         _id, courseId, title, image, price, email, payment
     } = data
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
     return (
-        <tr data-aos="fade-up" >
+        <tr  >
             <th>
                 <label>
                     {index + 1}

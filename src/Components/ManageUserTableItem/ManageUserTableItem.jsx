@@ -1,9 +1,7 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+
 
 const ManageUserTableItem = ({ data, index }) => {
     const { _id, name, image, email, role } = data;
@@ -11,17 +9,17 @@ const ManageUserTableItem = ({ data, index }) => {
     const [axiosSecure] = useAxiosSecure();
 
     const handleMakeAdmin = () => {
-        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/updaterole/admin/${_id}`).then(data => { console.log(data.data); window.location.reload() })
+        axiosSecure.patch(`/updaterole/admin/${_id}`).then(data => { console.log(data.data); window.location.reload() })
     }
 
 
     const handleMakeInstructor = () => {
-        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/updaterole/instructor/${_id}`).then(data => {
+        axiosSecure.patch(`/updaterole/instructor/${_id}`).then(data => {
             if (data.data.modifiedCount > 0) {
                 const instructorData = {
                     image, name, email, totalStudents: 0, title: null
                 }
-                axiosSecure.post('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/instructor', (instructorData)).then(data => { console.log(data.data); })
+                axiosSecure.post('/instructor', (instructorData)).then(data => { console.log(data.data); })
             } else {
                 console.log(data.data);
                 window.location.reload()
@@ -29,14 +27,12 @@ const ManageUserTableItem = ({ data, index }) => {
         })
     }
 
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
+
 
     return (
 
-        <tr data-aos="fade-up" >
+        <tr>
             <th>
                 <label>
                     {index + 1}

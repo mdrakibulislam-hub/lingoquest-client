@@ -3,11 +3,12 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Registration = () => {
 
     useEffect(() => {
-        document.title = "Sign up | Vault of marvel"
+        document.title = "Sign up | Lingoquest"
     }, [])
 
     const navigate = useNavigate();
@@ -48,21 +49,14 @@ const Registration = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
 
-
+            const [axiosSecure] = useAxiosSecure();
 
             updateUserProfile(name, photoURL)
                 .then(() => {
                     const dbUserDetails = { name: name, email: email, role: "user", image: photoURL }
-                    fetch('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allusers', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(dbUserDetails)
-                    })
-                        .then(res => res.json())
+                    axiosSecure.post('/allusers', (dbUserDetails))
                         .then(data => {
-                            if (data.insertedId) {
+                            if (data.data.insertedId) {
 
 
                                 Swal.fire({

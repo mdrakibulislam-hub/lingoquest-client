@@ -1,16 +1,14 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+
 
 const MyClassesTableItem = ({ data, index }) => {
 
     const [axiosSecure] = useAxiosSecure();
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const handleDelete = () => {
-        axiosSecure.delete(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses/delete/${_id}`).then(data => {
+        axiosSecure.delete(`/allclasses/delete/${_id}`).then(data => {
 
             Swal.fire(
                 'Deleted',
@@ -20,13 +18,11 @@ const MyClassesTableItem = ({ data, index }) => {
             window.location.reload()
         })
     }
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
+
     return (
 
-        <tr data-aos="fade-up" >
+        <tr >
             <th>
                 <label>
                     {index + 1}

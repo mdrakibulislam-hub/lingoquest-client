@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ClassCard from "../../Components/ClassCard/ClassCard";
 import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
 import useClasses from "../../Hooks/useClasses";
@@ -5,6 +6,10 @@ import useClasses from "../../Hooks/useClasses";
 const Courses = () => {
 
     const classes = useClasses().slice();
+
+    useEffect(() => {
+        document.title = "Courses | Lingoquest"
+    }, [])
 
     return (
         <div className="main-container my-16">

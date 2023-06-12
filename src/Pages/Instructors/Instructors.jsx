@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
 import InstructorCard from "../../Components/InstructorCard/InstructorCard";
 import useInstructor from "../../Hooks/useInstructor";
 
 const Instructors = () => {
-
+    useEffect(() => {
+        document.title = "Instructors | Lingoquest"
+    }, [])
     const instructors = useInstructor();
 
     return (

@@ -3,20 +3,17 @@ import FeedBackModal from "../FeedBackModal/FeedBackModal";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAllClasses from "../../Hooks/useAllClasses";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+
 
 const ManageClassTableItem = ({ data, index }) => {
     const { _id, image, title, instructorName, instructorEmail, availableSeats, price, status, totalStudents, adminsFeedback } = data;
     const [axiosSecure] = useAxiosSecure();
-    const [classes, control, setControl] = useAllClasses();
 
     const handleClassReject = () => {
         console.log(_id);
-        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/reject/${_id}`).then(data => {
+        axiosSecure.patch(`/classes/reject/${_id}`).then(data => {
             console.log(data.data);
-            setControl(!control)
+
             Swal.fire({
                 icon: 'error',
                 title: 'Rejected',
@@ -27,9 +24,8 @@ const ManageClassTableItem = ({ data, index }) => {
     }
 
     const handleClassApproved = () => {
-        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/approved/${_id}`).then(data => {
+        axiosSecure.patch(`/classes/approved/${_id}`).then(data => {
             console.log(data.data);
-            setControl(!control)
             Swal.fire(
                 'Approved',
                 'This class has been approved!',
@@ -39,13 +35,10 @@ const ManageClassTableItem = ({ data, index }) => {
         })
     }
 
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
 
     return (
-        <tr data-aos="fade-up" >
+        <tr >
             <th>
                 <label>
                     {index + 1}

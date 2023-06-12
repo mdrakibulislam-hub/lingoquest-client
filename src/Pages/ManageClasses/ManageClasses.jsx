@@ -1,12 +1,37 @@
-import HeadingTitle from "../../Components/HeadingTitle/HeadingTitle";
+import { useContext, useEffect } from "react";
 import ManageClassTableItem from "../../Components/ManageClassTableItem/ManageClassTableItem";
 import useAllClasses from "../../Hooks/useAllClasses";
 import useClasses from "../../Hooks/useClasses";
+import { AuthContext } from "../../Provider/AuthProvider";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+
+
 
 const ManageClasses = () => {
-    const [classes, control, setControl] = useAllClasses();
+
+    useEffect(() => {
+        document.title = "Manage Classes | Lingoquest"
+    }, [])
+    const { user, loading } = useContext(AuthContext);
+    const classes = useAllClasses();
     console.log(classes);
+
+
+
+
+    if (loading) {
+        return (
+            <div>
+                <LoadingSpinner></LoadingSpinner>
+            </div>
+        );
+    }
+
+
     return (
+
+
+
         <div>
             <h1 className="text-3xl font-bold font-playfair text-neutral text-center mb-12">Manage Classes</h1>
 
@@ -29,6 +54,7 @@ const ManageClasses = () => {
 
                         {classes.map((data, index) => <ManageClassTableItem data={data} key={data._id} index={index}></ManageClassTableItem>)}
 
+
                     </tbody>
 
 
@@ -36,6 +62,7 @@ const ManageClasses = () => {
             </div>
 
         </div>
+
     );
 };
 

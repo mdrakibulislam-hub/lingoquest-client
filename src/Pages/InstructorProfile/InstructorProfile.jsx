@@ -10,13 +10,13 @@ const InstructorProfile = () => {
     const [instructor, setInstructor] = useState([]);
 
     useEffect(() => {
-        axios(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/instructor/${id}`).then(data => setInstructor(data.data))
+        axios(`https://lingoquest-server-api.vercel.app/instructor/${id}`).then(data => setInstructor(data.data))
     }, [id]);
 
     const { _id, image, title, name, email, totalStudents } = instructor;
 
     const [classes, setClasses] = useState([]);
-    useEffect(() => { axios(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses/${email}`).then(data => setClasses(data.data)) }, [email]);
+    useEffect(() => { axios(`https://lingoquest-server-api.vercel.app/allclasses/${email}`).then(data => setClasses(data.data)) }, [email]);
 
     console.log(classes);
 

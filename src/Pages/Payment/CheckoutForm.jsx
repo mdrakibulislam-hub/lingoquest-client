@@ -18,6 +18,9 @@ const CheckoutForm = ({ price, id }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
+
+
+
     useEffect(() => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
@@ -27,6 +30,9 @@ const CheckoutForm = ({ price, id }) => {
                 })
         }
     }, [price, axiosSecure])
+
+
+
 
 
     const handleSubmit = async (event) => {
@@ -77,25 +83,14 @@ const CheckoutForm = ({ price, id }) => {
         console.log('payment intent', paymentIntent)
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
-            // setTransactionId(paymentIntent.id);
-            // save payment information to the server
-            // axiosSecure.post('/payments', payment)
-            //     .then(res => {
-            //         console.log(res.data);
-            //         if (res.data.result.insertedId) {
-            //             // display confirm
-            //         }
-            //     })
-            axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/cart/pay/${id}`).then(data => {
+
+            axiosSecure.patch(`/cart/pay/${id}`).then(data => {
                 console.log(data.data);
-                if (data.data.matchedCount > 0) {
-                    axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclasses/${id}`).then(data => { console.log(data.data); })
-                    Swal.fire(
-                        'Congrats!',
-                        'You have successfully enrolled fot the course!',
-                        'success'
-                    )
-                }
+                Swal.fire(
+                    'Congrats!',
+                    'You have successfully enrolled fot the course!',
+                    'success'
+                )
             })
         }
 

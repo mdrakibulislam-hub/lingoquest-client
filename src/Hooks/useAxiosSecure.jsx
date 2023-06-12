@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const axiosSecure = axios.create({
-    baseURL: 'https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app',
+    baseURL: 'https://lingoquest-server-api.vercel.app'
 });
 
 const useAxiosSecure = () => {

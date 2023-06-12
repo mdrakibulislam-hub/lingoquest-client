@@ -11,7 +11,7 @@ const FeedBackModal = ({ id }) => {
         event.preventDefault();
         const userFeedback = feedback.current.value
         console.log(userFeedback);
-        axiosSecure.patch(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/sendfeedback/class/${id}`, { userFeedback }).then(data => {
+        axiosSecure.patch(`/sendfeedback/class/${id}`, { userFeedback }).then(data => {
             console.log(data.data);
             Swal.fire(
                 'Feedback Sent',

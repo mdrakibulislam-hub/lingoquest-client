@@ -1,17 +1,19 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "./useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const useAllClasses = () => {
 
     const [classes, setClasses] = useState([]);
     const [axiosSecure] = useAxiosSecure();
-    const [control, setControl] = useState(true);
+    const { user, loading } = useContext(AuthContext);
     useEffect(() => {
-        axiosSecure('https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/allclassesforadmin').then(response => setClasses(response.data))
-    }, [control, axiosSecure])
+        axiosSecure('/allclassesforadmin').then(response => setClasses(response.data))
+    }, [axiosSecure])
 
-    return [classes, control, setControl];
+    return classes;
 };
 
 export default useAllClasses;

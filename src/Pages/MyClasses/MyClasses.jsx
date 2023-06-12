@@ -8,13 +8,17 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyClasses = () => {
 
+    useEffect(() => {
+        document.title = "My classes | Lingoquest"
+    }, [])
+
     const { user, loading } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
     const [axiosSecure] = useAxiosSecure();
 
     useEffect(() => {
-        axiosSecure.get(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
-    }, [user])
+        axiosSecure.get(`/classes/all/instructor/${user?.email}`).then(data => { setClasses(data.data) })
+    }, [user, axiosSecure])
 
     console.log(classes);
 

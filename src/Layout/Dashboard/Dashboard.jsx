@@ -2,23 +2,17 @@ import { Link, Outlet } from 'react-router-dom';
 import { FaBook, FaBookmark, FaBookReader, FaUserCog, FaEdit, FaHome, FaUser } from 'react-icons/fa';
 import { MdOutlineAddCircle } from 'react-icons/md';
 import useUserRole from '../../Hooks/useUserRole';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
 
 const Dashboard = () => {
     const [role, loading] = useUserRole();
 
-    //useEffect
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
     return (
 
 
         <>
 
-            <div data-aos="fade-up" className='main-container my-16'>
+            <div className='main-container my-16'>
 
 
                 <div className="drawer lg:drawer-open">

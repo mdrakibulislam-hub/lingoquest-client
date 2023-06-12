@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import useUserRole from "../../Hooks/useUserRole";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const DashboardHome = () => {
+    useEffect(() => {
+        document.title = "Dashboard | Lingoquest"
+    }, [])
     const [role, loading] = useUserRole();
     const { user } = useContext(AuthContext);
     console.log(role, loading);

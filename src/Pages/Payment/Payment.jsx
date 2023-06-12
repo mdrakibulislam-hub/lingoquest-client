@@ -4,18 +4,24 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 // TODO: provide publishable Key
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
+
+    useEffect(() => {
+        document.title = "Payment | Lingoquest"
+    }, [])
     const { id } = useParams();
     console.log(id);
+    const [axiosSecure] = useAxiosSecure();
     const [price, setPrice] = useState(null);
     useEffect(() => {
-        axios.get(`https://b7a12-summer-camp-server-side-mdrak-rakibulislamborkan-gmailcom.vercel.app/cart/price/${id}`).then(data => {
+        axiosSecure.get(`/cart/price/${id}`).then(data => {
             setPrice(data.data.price);
         })
-    }, [id])
+    }, [id, axiosSecure])
     // const price = parseFloat(total.toFixed(2))
     return (
         <div>
